@@ -157,7 +157,7 @@ const INITIAL_RESCUE_CASES = [
     locationName: "GST Road near Tambaram flyover",
     coords: { lat: 12.9270, lng: 80.1150 },
     description: "Desi cow sitting lethargic on road divider, suspected severe plastic ingestion & dehydration.",
-    imageUrl: "https://images.unsplash.com/photo-1570042225831-d98fa7577f13?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80",
     reporterName: "Pooja V.",
     reporterPhone: "+91 98410 99882",
     status: "Under Treatment",
@@ -167,7 +167,7 @@ const INITIAL_RESCUE_CASES = [
     vetDiagnosis: "Severe dehydration and ruminal impaction. IV electrolytes started.",
     treatmentNotes: "Administered Ringers Lactate 3L + Vitamin B-complex.",
     recoveryPhotos: [
-      "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=600&q=80"
     ],
     pawPointsAwarded: 20
   },
@@ -753,6 +753,10 @@ function HomeScreen({ setActiveTab, rescueCases, setSelectedCaseId, currentUser,
                   src={item.imageUrl} 
                   alt={item.animalType} 
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80";
+                  }}
                 />
                 <span className={`absolute top-3 left-3 text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-md ${
                   item.urgency === 'HIGH' ? 'bg-red-600 text-white' : item.urgency === 'MEDIUM' ? 'bg-amber-500 text-white' : 'bg-emerald-600 text-white'
@@ -814,7 +818,7 @@ function ReportAnimalWizard({ currentUser, ngosList, onRescueCreated }) {
     { label: "Injured Stray Dog", type: "Dog", cond: "Injured", url: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=600&q=80" },
     { label: "Trapped Kitten", type: "Cat", cond: "Trapped", url: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80" },
     { label: "Wounded Kite (Bird)", type: "Bird", cond: "Injured", url: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=600&q=80" },
-    { label: "Dehydrated Cattle", type: "Cow", cond: "Sick", url: "https://images.unsplash.com/photo-1570042225831-d98fa7577f13?auto=format&fit=crop&w=600&q=80" }
+    { label: "Dehydrated Cattle", type: "Cow", cond: "Sick", url: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80" }
   ];
 
   const runAiEmergencyAssessment = () => {
@@ -1245,6 +1249,10 @@ function RescueTrackingView({ cases, selectedCase, setSelectedCaseId, onAdvanceS
               src={selectedCase.imageUrl} 
               alt={selectedCase.animalType} 
               className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80";
+              }}
             />
             <span className={`absolute top-3 left-3 text-xs font-extrabold px-3 py-1 rounded-full text-white shadow-md ${
               selectedCase.urgency === 'HIGH' ? 'bg-red-600' : 'bg-amber-500'
@@ -1877,7 +1885,15 @@ function NGODashboard({ rescueCases, setRescueCases, showToast, addNotification,
           <div key={item.id} className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
-                <img src={item.imageUrl} alt="Animal" className="w-16 h-16 rounded-xl object-cover border border-slate-200" />
+                <img 
+                  src={item.imageUrl} 
+                  alt="Animal" 
+                  className="w-16 h-16 rounded-xl object-cover border border-slate-200" 
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80";
+                  }}
+                />
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-mono font-bold text-xs text-slate-900">{item.id}</span>
@@ -2053,7 +2069,15 @@ function VeterinarianPortal({ rescueCases, setRescueCases, showToast, addNotific
               <span className="text-xs font-mono font-bold text-teal-700">{selectedCase.id}</span>
               <h3 className="text-xl font-bold text-slate-900">{selectedCase.condition} {selectedCase.animalType}</h3>
             </div>
-            <img src={selectedCase.imageUrl} alt="Animal" className="w-14 h-14 rounded-xl object-cover border border-slate-200" />
+            <img 
+              src={selectedCase.imageUrl} 
+              alt="Animal" 
+              className="w-14 h-14 rounded-xl object-cover border border-slate-200" 
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80";
+              }}
+            />
           </div>
 
           <div className="space-y-4">
