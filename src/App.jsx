@@ -21,7 +21,7 @@ const INITIAL_USERS = {
     city: "Chennai, TN"
   },
   ngo: {
-    id: "ngo_user_01",
+    id: "ngo_user_04",
     name: "Blue Cross Rescuer Desk",
     orgName: "Blue Cross of India (Chennai)",
     role: "ngo",
